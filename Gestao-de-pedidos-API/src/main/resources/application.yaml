@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: Gestao-de-pedidos-API
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+      poolName: HikariCP
+      maximumPoolSize: 10
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
