@@ -1,10 +1,7 @@
 package com.valemobi.Gestao_de_pedidos_API.Entities;
 
-import com.valemobi.Gestao_de_pedidos_API.Services.CepValidation;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+//import com.valemobi.Gestao_de_pedidos_API.Services.CepValidation;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -14,10 +11,13 @@ public class Pedidos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    private Clientes clienteId;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Clientes clientes;
     private Date dataPedido;
     private PedidoStatus pedidoStatus;
-    private CepValidation frete;
+    //private CepValidation frete;
 
     public int getId() {
         return Id;
@@ -28,11 +28,11 @@ public class Pedidos {
     }
 
     public Clientes getClienteId() {
-        return clienteId;
+        return clientes;
     }
 
     public void setClienteId(Clientes clienteId) {
-        this.clienteId = clienteId;
+        this.clientes = clienteId;
     }
 
     public PedidoStatus getPedidoStatus() {
@@ -51,22 +51,22 @@ public class Pedidos {
         this.dataPedido = dataPedido;
     }
 
-    public CepValidation getFrete() {
+    /*public CepValidation getFrete() {
         return frete;
     }
 
     public void setFrete(CepValidation frete) {
         this.frete = frete;
-    }
+    }*/
 
     @Override
     public String toString() {
         return "Pedidos{" +
                 "Id=" + Id +
-                ", clienteId=" + clienteId +
+                ", clienteId=" + clientes +
                 ", dataPedido=" + dataPedido +
                 ", pedidoStatus=" + pedidoStatus +
-                ", frete=" + frete +
+                //", frete=" + frete +
                 '}';
     }
 }

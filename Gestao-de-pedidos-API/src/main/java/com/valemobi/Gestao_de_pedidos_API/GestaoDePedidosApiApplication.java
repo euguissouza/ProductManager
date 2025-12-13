@@ -8,6 +8,7 @@ public class GestaoDePedidosApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestaoDePedidosApiApplication.class, args);
+        System.out.println("Serviço Online");
 	}
 
 }
