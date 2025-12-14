@@ -1,6 +1,6 @@
 package com.valemobi.Gestao_de_pedidos_API.Entities;
 
-//import com.valemobi.Gestao_de_pedidos_API.Services.CepValidation;
+//import com.valemobi.Gestao_de_pedidos_API.Services.ClienteService;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,7 +17,7 @@ public class Pedidos {
     private Clientes clientes;
     private Date dataPedido;
     private PedidoStatus pedidoStatus;
-    //private CepValidation frete;
+    //private ClienteService frete;
 
     public int getId() {
         return Id;
@@ -51,11 +51,11 @@ public class Pedidos {
         this.dataPedido = dataPedido;
     }
 
-    /*public CepValidation getFrete() {
+    /*public ClienteService getFrete() {
         return frete;
     }
 
-    public void setFrete(CepValidation frete) {
+    public void setFrete(ClienteService frete) {
         this.frete = frete;
     }*/
 
