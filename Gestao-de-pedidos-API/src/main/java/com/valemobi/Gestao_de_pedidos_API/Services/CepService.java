@@ -1,6 +1,8 @@
 package com.valemobi.Gestao_de_pedidos_API.Services;
 
 
+import com.valemobi.Gestao_de_pedidos_API.DTO.EnderecoDTO;
+import com.valemobi.Gestao_de_pedidos_API.DTO.ViaCepDTO;
 import com.valemobi.Gestao_de_pedidos_API.Entities.Endereco;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -13,23 +15,12 @@ public class CepService {
         this.cepRestClient = cepRestClient;
     }
 
-    public Endereco buscaEndereco(String cep){
-        if(cep == null || cep.length() != 8){
-            throw  new IllegalArgumentException("Cep invalido");
-        }
-
-        return cepRestClient.get().uri("/{cep}/json", cep)
-                .retrieve().body(Endereco.class);
+    public EnderecoDTO filtraCep(String cep){
+        return cepRestClient.get().uri("/{cep}/json")
+                .retrieve().body(EnderecoDTO.class);
     }
 
-    public Endereco preencheEndereco(Endereco endereco){
-        if (endereco == null || endereco.getCep() == null){
-            throw  new IllegalArgumentException("Endereço ou Cep inválido");
-        }
 
-        return cepRestClient.get().uri("/{cep}/json", endereco.getCep())
-                .retrieve().body(Endereco.class);
-    }
 
 
 

@@ -1,5 +1,6 @@
 package com.valemobi.Gestao_de_pedidos_API.controller;
 
+import com.valemobi.Gestao_de_pedidos_API.DTO.ClienteDTO;
 import com.valemobi.Gestao_de_pedidos_API.Entities.Clientes;
 import com.valemobi.Gestao_de_pedidos_API.Repository.ClienteRepository;
 import com.valemobi.Gestao_de_pedidos_API.Services.ClienteService;
@@ -22,9 +23,10 @@ public class ControllerAPI {
 
 
     @PostMapping("/cadastro-usuario")
-    public ResponseEntity<Clientes> cadastrar(@RequestBody Clientes clientes){
-        Clientes salvo = clienteService.CadastraClientes(clientes);
-        return ResponseEntity.ok(salvo);
+    public ResponseEntity<ClienteDTO> salvaCliente(@RequestBody ClienteDTO dto){
+        Clientes clientes = clienteService.salvar(dto);
+        System.out.println("Cliente Cadastrado");
+        return ResponseEntity.ok(dto);
     }
 
 

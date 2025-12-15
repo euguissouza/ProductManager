@@ -1,6 +1,5 @@
 package com.valemobi.Gestao_de_pedidos_API.Entities;
 
-import com.valemobi.Gestao_de_pedidos_API.Services.CepService;
 import jakarta.persistence.*;
 
 

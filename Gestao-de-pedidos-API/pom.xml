@@ -54,11 +54,10 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<repositories>
         <repository>
             <id>repsy</id>
-            <url>https://repo.repsy.io/mvn/thalles/via-cep</url>
+            <url>https://repo.repsy.io/mvn/thalles/via-endereco</url>
         </repository>
     </repositories>
 
