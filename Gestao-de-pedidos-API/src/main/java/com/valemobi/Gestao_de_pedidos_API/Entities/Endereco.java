@@ -1,5 +1,6 @@
 package com.valemobi.Gestao_de_pedidos_API.Entities;
 
+import com.valemobi.Gestao_de_pedidos_API.Services.CepService;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,7 +16,9 @@ public class Endereco {
     private String bairro;
     private String cidade;
 
-    public String getCep() {
+
+
+     public String getCep() {
         return cep;
     }
 

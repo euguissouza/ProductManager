@@ -1,6 +1,6 @@
 package com.valemobi.Gestao_de_pedidos_API.Entities;
 
-import com.valemobi.Gestao_de_pedidos_API.Configuration.CepClientConfig;
+import com.valemobi.Gestao_de_pedidos_API.Services.CepService;
 import jakarta.persistence.*;
 
 
@@ -26,6 +26,7 @@ public class Clientes {
         Id = id;
     }
 
+
     public Endereco getEndereco() {
         return endereco;
     }
@@ -33,6 +34,7 @@ public class Clientes {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
     public String getNome() {
         return nome;
     }

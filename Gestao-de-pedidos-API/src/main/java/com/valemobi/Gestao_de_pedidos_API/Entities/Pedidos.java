@@ -1,6 +1,6 @@
 package com.valemobi.Gestao_de_pedidos_API.Entities;
 
-//import com.valemobi.Gestao_de_pedidos_API.Services.ClienteService;
+//import com.valemobi.Gestao_de_pedidos_API.Services.CepService;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,7 +17,7 @@ public class Pedidos {
     private Clientes clientes;
     private Date dataPedido;
     private PedidoStatus pedidoStatus;
-    //private ClienteService frete;
+    //private CepService frete;
 
     public int getId() {
         return Id;
@@ -51,11 +51,11 @@ public class Pedidos {
         this.dataPedido = dataPedido;
     }
 
-    /*public ClienteService getFrete() {
+    /*public CepService getFrete() {
         return frete;
     }
 
-    public void setFrete(ClienteService frete) {
+    public void setFrete(CepService frete) {
         this.frete = frete;
     }*/
 

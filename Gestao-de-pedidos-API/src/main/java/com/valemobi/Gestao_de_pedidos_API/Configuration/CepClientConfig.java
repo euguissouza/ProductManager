@@ -9,7 +9,7 @@ import org.springframework.web.client.RestClient;
 public class CepClientConfig {
 
     @Bean
-    public RestClient restClient(){
+    public RestClient cepRestClient(){
         return RestClient.builder()
                 .baseUrl("https://viacep.com.br/ws").build();
 
