@@ -2,6 +2,8 @@ package com.valemobi.Gestao_de_pedidos_API.Entities;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name="produtos")
 public class Produto {
@@ -9,8 +11,10 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private String nomeProduto;
-    private float price;
-    private int estoque;
+    private BigDecimal price;
+    private int quantidade = 30;
+
+
 
     public int getId() {
         return Id;
@@ -20,11 +24,11 @@ public class Produto {
         Id = id;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -36,12 +40,12 @@ public class Produto {
         this.nomeProduto = nomeProduto;
     }
 
-    public int getEstoque() {
-        return estoque;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setEstoque(int estoque) {
-        this.estoque = estoque;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     @Override
@@ -50,7 +54,6 @@ public class Produto {
                 "Id=" + Id +
                 ", nomeProduto='" + nomeProduto + '\'' +
                 ", price=" + price +
-                ", estoque=" + estoque +
                 '}';
     }
 }

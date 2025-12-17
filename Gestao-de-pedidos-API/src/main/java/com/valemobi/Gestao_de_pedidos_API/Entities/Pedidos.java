@@ -17,7 +17,6 @@ public class Pedidos {
     private Clientes clientes;
     private Date dataPedido;
     private PedidoStatus pedidoStatus;
-    //private CepService frete;
 
     public int getId() {
         return Id;
@@ -51,13 +50,7 @@ public class Pedidos {
         this.dataPedido = dataPedido;
     }
 
-    /*public CepService getFrete() {
-        return frete;
-    }
 
-    public void setFrete(CepService frete) {
-        this.frete = frete;
-    }*/
 
     @Override
     public String toString() {
@@ -66,7 +59,6 @@ public class Pedidos {
                 ", clienteId=" + clientes +
                 ", dataPedido=" + dataPedido +
                 ", pedidoStatus=" + pedidoStatus +
-                //", frete=" + frete +
                 '}';
     }
 }
