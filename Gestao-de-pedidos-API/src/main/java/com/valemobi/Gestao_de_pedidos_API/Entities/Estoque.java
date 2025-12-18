@@ -10,7 +10,7 @@ public class Estoque {
     private long id;
     @OneToOne
     private Produto produto;
-    private int quantidade = produto.getQuantidade();
+    private int quantidade;
 
     public long getId() {
         return id;

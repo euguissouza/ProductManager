@@ -18,17 +18,23 @@ public class EnderecoService {
 
 
 
-    public Endereco buscaEndereco(EnderecoDTO dto){
-        Endereco endereco = new Endereco();
+    public Endereco criarEnderecoPorCep(EnderecoDTO dto) {
+
         ViaCepDTO buscaCep = cepService.filtraCep(dto.getCep());
-        Clientes cliente = new Clientes();
+
+        if (buscaCep == null || buscaCep.getCep() == null) {
+            throw new RuntimeException("CEP inválido ou não encontrado");
+        }
+
+        Endereco endereco = new Endereco();
 
         endereco.setCep(buscaCep.getCep());
         endereco.setBairro(buscaCep.getBairro());
         endereco.setCidade(buscaCep.getLocalidade());
         endereco.setLongradouro(buscaCep.getLongradouro());
         endereco.setNumero(dto.getNumero());
-        endereco.setComplemento(buscaCep.getComplemento());
+        endereco.setComplemento(dto.getComplemento());
+
         return enderecoRepository.save(endereco);
     }
 }

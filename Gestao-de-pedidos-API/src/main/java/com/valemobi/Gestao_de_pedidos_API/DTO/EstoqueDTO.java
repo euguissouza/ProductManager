@@ -4,7 +4,7 @@ import com.valemobi.Gestao_de_pedidos_API.Entities.Produto;
 
 public class EstoqueDTO {
     private Produto produto;
-    private int qunatidade = produto.getQuantidade();
+    private int qunatidade;
 
     public Produto getProduto() {
         return produto;

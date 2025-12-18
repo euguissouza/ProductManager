@@ -1,19 +1,31 @@
 package com.valemobi.Gestao_de_pedidos_API.DTO;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class VendaDTO {
-    private ClienteDTO cliente;
+    private String cliente;
+    private Long clienteId;
     private List<ItemVendaDTO> items;
     private LocalDateTime dataVenda;
+    private BigDecimal preco;
 
-    public ClienteDTO getCliente() {
+
+    public String getCliente() {
         return cliente;
     }
 
-    public void setCliente(ClienteDTO cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
+    }
+
+    public Long getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
     }
 
     public List<ItemVendaDTO> getItems() {
@@ -30,5 +42,13 @@ public class VendaDTO {
 
     public void setDataVenda(LocalDateTime dataVenda) {
         this.dataVenda = dataVenda;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 }

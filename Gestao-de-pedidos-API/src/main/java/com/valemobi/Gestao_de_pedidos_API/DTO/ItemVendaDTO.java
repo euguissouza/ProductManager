@@ -3,15 +3,17 @@ package com.valemobi.Gestao_de_pedidos_API.DTO;
 import java.math.BigDecimal;
 
 public class ItemVendaDTO {
-    private ProdutoDTO produto;
+
+    private String produto;
     private int quant;
     private BigDecimal preco;
 
-    public ProdutoDTO getProduto() {
+
+    public String getProduto() {
         return produto;
     }
 
-    public void setProduto(ProdutoDTO produto) {
+    public void setProduto(String produto) {
         this.produto = produto;
     }
 

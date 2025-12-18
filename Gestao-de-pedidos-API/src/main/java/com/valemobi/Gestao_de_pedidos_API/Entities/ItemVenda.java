@@ -10,11 +10,11 @@ public class ItemVenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-
     @ManyToOne
+    @JoinColumn(name = "produtoId")
     private Produto produto;
     private int quantidadeItem;
-    private BigDecimal preco = produto.getPrice();
+    private BigDecimal preco;
 
     public Long getId() {
         return Id;
@@ -23,6 +23,8 @@ public class ItemVenda {
     public void setId(Long id) {
         Id = id;
     }
+
+
 
     public Produto getProduto() {
         return produto;

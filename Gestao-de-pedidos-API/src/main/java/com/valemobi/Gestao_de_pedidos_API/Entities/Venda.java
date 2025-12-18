@@ -2,6 +2,7 @@ package com.valemobi.Gestao_de_pedidos_API.Entities;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -10,28 +11,26 @@ import java.util.List;
 public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
-    @ManyToOne
-    private Clientes cliente;
+    private Long Id;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "clienteID", nullable = false)
+    private Clientes clientes;
+
     @OneToMany
     private List<ItemVenda> itens;
     private LocalDateTime dataVenda;
+    private BigDecimal preco;
 
-    public long getId() {
+    public Long getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         Id = id;
     }
 
-    public Clientes getCliente() {
-        return cliente;
-    }
 
-    public void setCliente(Clientes cliente) {
-        this.cliente = cliente;
-    }
 
     public List<ItemVenda> getItens() {
         return itens;
@@ -48,4 +47,27 @@ public class Venda {
     public void setDataVenda(LocalDateTime dataVenda) {
         this.dataVenda = dataVenda;
     }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
+    public Clientes getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(Clientes clientes) {
+        this.clientes = clientes;
+    }
+
+    public void AddItem(ItemVenda item){
+        itens.add(item);
+    }
+
+
+
 }
