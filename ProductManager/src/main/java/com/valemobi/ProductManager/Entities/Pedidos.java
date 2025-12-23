@@ -19,7 +19,7 @@ public class Pedidos {
     private Date data;
     private StatusPedido status;
     @OneToMany(
-            mappedBy = "",
+            mappedBy = "pedido",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )

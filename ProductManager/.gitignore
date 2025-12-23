@@ -3,6 +3,7 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+./Gestao-de-pedidos-API
 
 ### STS ###
 .apt_generated

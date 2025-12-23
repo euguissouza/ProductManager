@@ -1,21 +1,19 @@
 package com.valemobi.ProductManager.DTO;
 
-import com.valemobi.ProductManager.Entities.Produto;
-
 import java.math.BigDecimal;
 
 public class ItensDTO {
 
     private Long produtoId;
-    private int quantia;
+    private int quantidade;
     private BigDecimal precoPedido;
 
-    public int getQuantia() {
-        return quantia;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantia(int quantia) {
-        this.quantia = quantia;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public Long getProdutoId() {

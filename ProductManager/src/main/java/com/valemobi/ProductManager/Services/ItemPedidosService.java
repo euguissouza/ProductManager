@@ -17,17 +17,17 @@ public class ItemPedidosService {
         this.produtoService = produtoService;
     }
 
-    public ItensPedidos itemPedido(ItensDTO dto, Produto produto){
+    public ItensPedidos itemPedido(ItensDTO dto, ProdutoDTO produto){
 
         Produto produtos = produtoRepository.findById(dto.getProdutoId())
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-        produtoService.baixaEstoque(produtos, dto.getQuantia());
+        produtoService.baixaEstoque(produtos, dto.getQuantidade());
 
         ItensPedidos item = new ItensPedidos();
 
-        item.setQuantia(dto.getQuantia());
-        item.setProduto(produtoService.adicionaProduto());
+        item.setQuantidade(dto.getQuantidade());
+        item.setProduto(produtoService.adicionaProduto(produto));
 
         return item;
 

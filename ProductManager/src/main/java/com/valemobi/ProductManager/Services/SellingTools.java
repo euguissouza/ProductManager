@@ -10,6 +10,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SellingTools {
@@ -27,7 +29,21 @@ public class SellingTools {
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
         pedido.setCliente(cliente);
-        pedido.setPedidosList(pedidosDTO.getPedidosList());
+
+        List<ItensPedidos> itens = pedidosDTO.getPedidosList();
+
+        if(pedidosDTO.getPedidosList() == null || pedidosDTO.getPedidosList().isEmpty()){
+            throw new RuntimeException("Adiciona o item porra");
+        }
+
+        for(ItensPedidos item : pedido.getPedidosList()){
+            item.setPedido(pedido);
+        }
+
+        pedido.setPedidosList(itens);
+
+
+
         pedido.setTotal(pedidosDTO.getTotal());
         pedido.setParcelamento(pedidosDTO.getParcelamento());
         return pedidosRepository.save(pedido);
@@ -36,7 +52,10 @@ public class SellingTools {
 
     @Transactional
     public Pedidos novoPedido(PedidosDTO dto){
+
+
         Pedidos venda = pedidosRequest(dto);
+        venda.getCliente();
         BigDecimal limite = new BigDecimal(100.00);
 
         //parcelas

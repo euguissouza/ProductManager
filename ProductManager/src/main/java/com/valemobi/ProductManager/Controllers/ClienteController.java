@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/valemobi-clentes")
+@RequestMapping("/valemobi-clientes")
 public class ClienteController {
     private ClienteRepository clienteRepository;
     private ClienteService clienteService;
@@ -20,18 +20,16 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    @PostMapping("cadastra-clientes")
+    @PostMapping("/cadastra-clientes")
     public ResponseEntity<ClienteDTO> cadastraCliente(@RequestBody ClienteDTO dto){
         Cliente cliente = clienteService.salvaCliente(dto);
         System.out.println("Cliente Cadastrado");
-
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping("/pesquisa-cliente")
     public ResponseEntity<List<Cliente>> buscaCliente(Cliente cliente){
         List<Cliente> list = clienteRepository.findAll();
-
         return ResponseEntity.ok(list);
     }
 

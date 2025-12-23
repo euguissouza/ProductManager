@@ -1,6 +1,8 @@
 package com.valemobi.ProductManager.Services;
 
+import com.valemobi.ProductManager.DTO.ItensDTO;
 import com.valemobi.ProductManager.DTO.ProdutoDTO;
+import com.valemobi.ProductManager.Entities.ItensPedidos;
 import com.valemobi.ProductManager.Entities.Produto;
 import com.valemobi.ProductManager.Repositories.ProdutoRepository;
 import org.springframework.stereotype.Service;
@@ -25,7 +27,8 @@ public class ProdutoService {
     }
 
 
-    public void baixaEstoque(Produto produto, int quantidade){
+    public void baixaEstoque(Produto produto, int quantidade) {
+
         if(quantidade > produto.getQuantidade()){
             throw new RuntimeException("Quantidade selecionada insuficiente em estoque");
         }
@@ -34,8 +37,5 @@ public class ProdutoService {
 
 
     }
-
-
-
 
 }
