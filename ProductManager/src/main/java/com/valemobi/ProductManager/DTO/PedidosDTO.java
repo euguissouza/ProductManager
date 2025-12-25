@@ -1,7 +1,7 @@
 package com.valemobi.ProductManager.DTO;
 
-import com.valemobi.ProductManager.Entities.Cliente;
 import com.valemobi.ProductManager.Entities.ItensPedidos;
+import com.valemobi.ProductManager.Entities.Produto;
 import com.valemobi.ProductManager.Entities.StatusPedido;
 
 import java.math.BigDecimal;
@@ -12,10 +12,13 @@ public class PedidosDTO {
     private long clienteId;
     private Date data;
     private StatusPedido status;
-    private List<ItensPedidos> pedidosList;
+    private List<Produto> produtos;
     private BigDecimal total;
     private Boolean parcelamento;
+    private int quantidade;
     private BigDecimal valorParcela;
+    private BigDecimal frete;
+
 
     public long getClienteId() {
         return clienteId;
@@ -33,12 +36,20 @@ public class PedidosDTO {
         this.data = data;
     }
 
-    public List<ItensPedidos> getPedidosList() {
-        return pedidosList;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setPedidosList(List<ItensPedidos> pedidosList) {
-        this.pedidosList = pedidosList;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public StatusPedido getStatus() {
@@ -71,5 +82,13 @@ public class PedidosDTO {
 
     public void setValorParcela(BigDecimal valorParcela) {
         this.valorParcela = valorParcela;
+    }
+
+    public BigDecimal getFrete() {
+        return frete;
+    }
+
+    public void setFrete(BigDecimal frete) {
+        this.frete = frete;
     }
 }

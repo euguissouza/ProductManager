@@ -19,13 +19,14 @@ public class ClienteService {
 
     public Cliente salvaCliente(ClienteDTO dto){
         Cliente cliente =  new Cliente();
-        Endereco endereco = new Endereco();
+        Endereco endereco = enderecoService.consultaEndereco(dto.getCep());
        cliente.setNome(dto.getNome());
        cliente.setEmail(dto.getEmail());
        cliente.setTelefone(dto.getTelefone());
-       cliente.setEndereco(enderecoService.consultaEndereco(dto.getCep()));
-
-       return clienteRepository.save(cliente);
+       endereco.setCliente(cliente);
+       cliente.setEndereco(endereco);
+       Cliente clienteSalvo = clienteRepository.save(cliente);
+       return clienteSalvo;
     }
 
 

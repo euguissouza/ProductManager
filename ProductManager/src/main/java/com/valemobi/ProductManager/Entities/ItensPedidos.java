@@ -11,7 +11,7 @@ public class ItensPedidos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     @ManyToOne
-    @JoinColumn(name = "pedido_id", nullable = false)
+    @JoinColumn(name = "pedido_id")
     private Pedidos pedido;
 
     @ManyToOne

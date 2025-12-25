@@ -1,5 +1,6 @@
 package com.valemobi.ProductManager.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +9,10 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
+
+    @OneToOne(mappedBy = "endereco")
+    @JsonBackReference
+    private Cliente cliente;
     private String cep;
     private String logradouro;
     private String numero;
@@ -16,12 +21,21 @@ public class Endereco {
     private String localidade;
     private String uf;
 
+
     public long getId() {
         return Id;
     }
 
     public void setId(long id) {
         Id = id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getUf() {

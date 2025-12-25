@@ -25,7 +25,6 @@ public class EnderecoService {
 
     public Endereco consultaEndereco(String cep){
         EnderecoDTO dto = completacep(cep);
-
         Endereco endereco = new Endereco();
         endereco.setCep(dto.getCep());
         endereco.setLogradouro(dto.getLogradouro());
@@ -35,6 +34,10 @@ public class EnderecoService {
         endereco.setLocalidade(dto.getLocalidade());
         endereco.setUf(dto.getUf());
 
-        return enderecoRepository.save(endereco);
+        enderecoRepository.save(endereco);
+
+        return endereco;
     }
+
+
 }

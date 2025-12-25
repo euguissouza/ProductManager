@@ -1,9 +1,11 @@
 package com.valemobi.ProductManager.Entities;
 
 
+import com.valemobi.ProductManager.DTO.ProdutoDTO;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,17 +21,26 @@ public class Pedidos {
     private Date data;
     private StatusPedido status;
     @OneToMany(
-            mappedBy = "pedido",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<ItensPedidos> pedidosList;
+    @JoinColumn(name = "produto_id")
+    private List<Produto> produtos;
+
+    private int quantidade;
 
     private BigDecimal total;
 
     private Boolean parcelamento;
 
     private BigDecimal valorParcela;
+
+    private BigDecimal frete;
+
+
+
+
+
 
     public Long getId() {
         return Id;
@@ -48,12 +59,12 @@ public class Pedidos {
     }
 
 
-    public List<ItensPedidos> getPedidosList() {
-        return pedidosList;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setPedidosList(List<ItensPedidos> pedidosList) {
-        this.pedidosList = pedidosList;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 
     public Date getData() {
@@ -70,6 +81,14 @@ public class Pedidos {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public void setId(long id) {
@@ -100,15 +119,24 @@ public class Pedidos {
         this.valorParcela = valorParcela;
     }
 
+    public BigDecimal getFrete() {
+        return frete;
+    }
+
+    public void setFrete(BigDecimal frete) {
+        this.frete = frete;
+    }
+
     @Override
     public String toString() {
         return "Pedidos{" +
                 ", cliente=" + cliente +
                 ", data=" + data +
                 ", status=" + status +
-                ", pedidosList=" + pedidosList +
+                ", produtos=" + produtos +
                 ", total=" + total +
                 ", valorParcela" + valorParcela+
+                ", frete" + frete+
                 '}';
     }
 }

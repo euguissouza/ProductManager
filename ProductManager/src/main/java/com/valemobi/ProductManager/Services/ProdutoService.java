@@ -21,7 +21,6 @@ public class ProdutoService {
         produto.setPreco(dto.getPreco());
         produto.setQuantidade(dto.getQuantidade());
 
-
         return produtoRepository.save(produto);
 
     }

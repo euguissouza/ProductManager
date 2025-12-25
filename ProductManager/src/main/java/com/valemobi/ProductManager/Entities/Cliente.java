@@ -1,5 +1,6 @@
 package com.valemobi.ProductManager.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
@@ -18,6 +19,7 @@ public class Cliente {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id")
+    @JsonManagedReference
     private Endereco endereco;
     public Cliente(){}
 
