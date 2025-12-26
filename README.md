@@ -25,9 +25,8 @@ JSON específico. Cada payload deve ser usado nos seus respectivos EndPoints par
     "email":"emailexample@example.com",
     "telefone": 12 3456-7890,
     "cep": "01001000",
-      "endereco": {
-          "numero":""
-     }   
+    "numero":"",
+    "complemento":""   
     }
 
 

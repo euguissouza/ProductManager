@@ -23,9 +23,13 @@ public class ClienteService {
        cliente.setNome(dto.getNome());
        cliente.setEmail(dto.getEmail());
        cliente.setTelefone(dto.getTelefone());
+       endereco.setNumero(dto.getNumero());
+       endereco.setComplemento(dto.getComplemento());
        endereco.setCliente(cliente);
        cliente.setEndereco(endereco);
        Cliente clienteSalvo = clienteRepository.save(cliente);
+
+        System.out.println("Log Cliente: " + clienteSalvo);
        return clienteSalvo;
     }
 

@@ -11,7 +11,8 @@ public class ClienteDTO {
     private String email;
     private BigInteger telefone;
     private String cep;
-    private EnderecoDTO endereco;
+    private  String numero;
+    private String complemento;
 
     public ClienteDTO(){
     }
@@ -31,14 +32,6 @@ public class ClienteDTO {
         this.cep = cep;
     }
 
-    public EnderecoDTO getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(EnderecoDTO endereco) {
-        this.endereco = endereco;
-    }
-
     public BigInteger getTelefone() {
         return telefone;
     }
@@ -53,5 +46,21 @@ public class ClienteDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 }
