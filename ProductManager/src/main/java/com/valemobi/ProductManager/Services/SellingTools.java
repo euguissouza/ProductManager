@@ -29,10 +29,10 @@ public class SellingTools {
         this.produtoService = produtoService;
     }
 
+    @Transactional
     public Pedidos pedidosRequest(PedidosDTO pedidosDTO){
         Pedidos pedido = new Pedidos();
         List<Produto> produtos = produtoRepository.findAll();
-        pedido.setQuantidade(pedidosDTO.getQuantidade());
 
 
         Cliente cliente = clienteRepository.findById(pedidosDTO.getClienteId())
@@ -59,18 +59,23 @@ public class SellingTools {
                 default -> pedido.setFrete(new BigDecimal(25.00));
             }
 
-            
+            BigDecimal corrige = new BigDecimal(10);
             BigDecimal valorItem = produto.getPreco()
-                    .multiply(BigDecimal.valueOf(pedido.getQuantidade()));
+                    .multiply(BigDecimal.valueOf(pedido.getQuantidade())
+                            .add(pedido.getFrete()));
 
-             pedido.setTotal(valorItem);
-
-
-            produtoService.baixaEstoque(produto, pedido.getQuantidade());
+             pedido.setTotal(valorItem.divide(corrige));
 
 
 
-            //edido.setTotal(valorTotal);
+            if(pedido.getQuantidade() <= produto.getQuantidade()){
+                pedido.setQuantidade(produto.getQuantidade() -pedido.getQuantidade());
+            } else if (pedido.getQuantidade() > produto.getQuantidade()) {
+                throw new RuntimeException("Quantidade maior que a disponivel em estoque");
+            }
+
+
+
             break;
 
         }
@@ -82,13 +87,13 @@ public class SellingTools {
 
 
     @Transactional
-    public Pedidos iniciaVenda(PedidosDTO dto ){
+    public Pedidos iniciaVenda(PedidosDTO dto){
 
         Pedidos venda = pedidosRequest(dto);
 
 
 
-        venda.setStatus(StatusPedido.PENDENTE);
+        venda.setStatus(StatusPedido.FINALIZADO);
         venda.setData(new Date());
 
 
@@ -106,6 +111,11 @@ public class SellingTools {
             venda.setParcelamento(false);
         }
         System.out.println(venda);
+        if (venda.getStatus() == StatusPedido.FINALIZADO){
+
+        }
+
+
         return venda;
     }
 
