@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:latest AS build
 LABEL authors="oguissouza"
 
 RUN apt-get uptade
