@@ -1,19 +1,17 @@
 FROM ubuntu:latest AS build
 LABEL authors="oguissouza"
 
-RUN apt-get uptade
+RUN apt-get update
 RUN apt-get install openjdk-21-jdk -y
+
 COPY .. .
 RUN apt-get install maven -y
 RUN mvn clean install
-
-
-ENTRYPOINT ["top", "-b"]
 
 FROM openjdk:21-jdk-slim
 
 EXPOSE 8080
 
-COPY --from=build /target/ProductManager.jar app.jar
+COPY --from=build /target/test-classes/ProductManager1.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
