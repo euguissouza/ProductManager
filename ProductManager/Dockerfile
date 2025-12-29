@@ -1,7 +1,7 @@
 FROM ubuntu:latest AS build
 LABEL authors="oguissouza"
 
-RUN apt-get uptade
+RUN apt-get update
 RUN apt-get install openjdk-21-jdk -y
 COPY .. .
 
