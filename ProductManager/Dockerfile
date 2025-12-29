@@ -21,7 +21,7 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Copia o jar gerado no stage de build
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/target/ProductManager1.jar app.jar
 
 # Porta padrão do Spring Boot
 EXPOSE 8080
