@@ -1,17 +1,33 @@
-FROM ubuntu:latest AS build
-LABEL authors="oguissouza"
+# =========================
+# STAGE 1 - Build
+# =========================
+FROM maven:3.9.9-eclipse-temurin-21 AS build
 
-RUN apt-get update
-RUN apt-get install openjdk-21-jdk -y
+WORKDIR /app
 
-COPY .. .
-RUN apt-get install maven -y
-RUN mvn clean install
+# Copia os arquivos do Maven
+COPY pom.xml .
+COPY src ./src
 
-FROM amazoncorretto:21-jdk-alpine
+# Faz o build do projeto
+RUN mvn clean package -DskipTests
 
+
+# =========================
+# STAGE 2 - Runtime
+# =========================
+FROM eclipse-temurin:21-jdk-alpine
+
+WORKDIR /app
+
+# Copia o jar gerado no stage de build
+COPY --from=build /app/target/*.jar app.jar
+
+# Porta padrão do Spring Boot
 EXPOSE 8080
 
-COPY --from=build /target/ProductManager1.jar app.jar
+# Variável importante para o Render
+ENV PORT=8080
 
+# Comando de inicialização
 ENTRYPOINT ["java", "-jar", "app.jar"]
